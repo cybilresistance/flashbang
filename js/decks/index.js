@@ -1,4 +1,5 @@
 import satGre from './sat-gre.js';
 import french from './french.js';
+import chessTactics from './chess-tactics.js';
 
-export const decks = [satGre, french];
+export const decks = [satGre, french, chessTactics];

@@ -24,7 +24,7 @@
       <h2 id="config-deck-name"></h2>
       <p id="config-deck-desc" class="subtitle"></p>
 
-      <div class="config-section">
+      <div class="config-section" id="mode-section">
         <label>Show first:</label>
         <div class="btn-group" id="mode-select">
           <button class="btn-option active" data-mode="word">Word</button>
@@ -63,10 +63,12 @@
         <div class="card" id="card">
           <div class="card-face card-front">
             <span class="card-level-badge" id="card-level-front"></span>
+            <div id="card-front-board" class="card-board" style="display:none"></div>
             <p id="card-front-text"></p>
           </div>
           <div class="card-face card-back">
             <span class="card-level-badge" id="card-level-back"></span>
+            <div id="card-back-board" class="card-board" style="display:none"></div>
             <p id="card-back-text"></p>
           </div>
         </div>

@@ -1,0 +1,23 @@
+{
+  "name": "flashbang",
+  "version": "1.0.0",
+  "description": "A chill flashcard game with satisfying card-flip animations. No backend, just vibes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cybilresistance/flashbang.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cybilresistance/flashbang/issues"
+  },
+  "homepage": "https://github.com/cybilresistance/flashbang#readme",
+  "dependencies": {
+    "chess.js": "^1.4.0"
+  }
+}

@@ -1,4 +1,5 @@
 import { decks } from './decks/index.js';
+import { renderBoard } from './chess-renderer.js';
 
 // --- State ---
 let currentDeck = null;
@@ -20,6 +21,11 @@ const screens = {
 function showScreen(name) {
   Object.values(screens).forEach((s) => s.classList.remove('active'));
   screens[name].classList.add('active');
+}
+
+// --- Helpers ---
+function isChessDeck() {
+  return currentDeck && currentDeck.cardType === 'chess';
 }
 
 // --- Shuffle (Fisher-Yates) ---
@@ -58,10 +64,17 @@ function openConfig(deck) {
   selectedLevel = 'all';
   displayMode = 'word';
 
-  // Reset button states
-  document.querySelectorAll('#mode-select .btn-option').forEach((b) => {
-    b.classList.toggle('active', b.dataset.mode === 'word');
-  });
+  // Show/hide mode selector based on deck type
+  const modeSection = $('mode-section');
+  if (deck.cardType === 'chess') {
+    modeSection.style.display = 'none';
+  } else {
+    modeSection.style.display = 'block';
+    document.querySelectorAll('#mode-select .btn-option').forEach((b) => {
+      b.classList.toggle('active', b.dataset.mode === 'word');
+    });
+  }
+
   document.querySelectorAll('#level-select .btn-option').forEach((b) => {
     b.classList.toggle('active', b.dataset.level === 'all');
   });
@@ -117,31 +130,73 @@ function renderCard() {
   // Remove flip without animation during card switch
   cardEl.style.transition = 'none';
   cardEl.classList.remove('flipped');
-  // Force reflow then restore transition
-  cardEl.offsetHeight;
+  cardEl.offsetHeight; // Force reflow
   cardEl.style.transition = '';
 
-  // Determine which side shows what
-  let front, back;
-  if (displayMode === 'word') {
-    front = card.word;
-    back = card.definition;
-  } else if (displayMode === 'definition') {
-    front = card.definition;
-    back = card.word;
+  const frontText = $('card-front-text');
+  const backText = $('card-back-text');
+  const frontBoard = $('card-front-board');
+  const backBoard = $('card-back-board');
+
+  if (isChessDeck()) {
+    // Chess card: board on front, move + solution on back
+    frontText.style.display = 'none';
+    backBoard.style.display = 'none';
+    frontBoard.style.display = 'flex';
+    backText.style.display = 'block';
+
+    // Render chess board
+    frontBoard.innerHTML = '';
+    const flipped = card.toMove === 'Black';
+    const svg = renderBoard(card.fen, { size: 280, flipped });
+    frontBoard.appendChild(svg);
+
+    // Add "to move" label
+    const label = document.createElement('div');
+    label.className = 'chess-to-move';
+    label.textContent = `${card.toMove} to move`;
+    frontBoard.appendChild(label);
+
+    // Back: best move + solution + themes
+    let backHtml = `<strong>${card.bestMove}</strong>`;
+    if (card.solution && card.solution !== card.bestMove) {
+      backHtml += `<br><span class="chess-solution">${card.solution}</span>`;
+    }
+    if (card.themes && card.themes.length > 0) {
+      backHtml += `<br><span class="chess-themes">${card.themes.join(' · ')}</span>`;
+    }
+    if (card.rating) {
+      backHtml += `<br><span class="chess-rating">Rating: ${card.rating}</span>`;
+    }
+    backText.innerHTML = backHtml;
   } else {
-    // Mix: random per card
-    if (Math.random() < 0.5) {
+    // Text card: word/definition
+    frontText.style.display = 'block';
+    backText.style.display = 'block';
+    frontBoard.style.display = 'none';
+    backBoard.style.display = 'none';
+
+    let front, back;
+    if (displayMode === 'word') {
       front = card.word;
       back = card.definition;
-    } else {
+    } else if (displayMode === 'definition') {
       front = card.definition;
       back = card.word;
+    } else {
+      if (Math.random() < 0.5) {
+        front = card.word;
+        back = card.definition;
+      } else {
+        front = card.definition;
+        back = card.word;
+      }
     }
+
+    frontText.textContent = front;
+    backText.textContent = back;
   }
 
-  $('card-front-text').textContent = front;
-  $('card-back-text').textContent = back;
   $('card-level-front').textContent = card.level;
   $('card-level-back').textContent = card.level;
 
@@ -175,7 +230,6 @@ $('next-btn').addEventListener('click', () => {
     currentIndex++;
     renderCard();
   } else {
-    // End of deck
     $('end-summary').textContent = `You went through all ${cards.length} cards in the ${currentDeck.name} deck.`;
     showScreen('end');
   }
