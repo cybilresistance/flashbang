@@ -241,7 +241,8 @@ body {
   cursor: pointer;
 }
 
-.card-container.chess-card {
+.card-container.chess-card,
+.card-container.chord-card {
   height: auto;
 }
 
@@ -253,7 +254,8 @@ body {
   transform-style: preserve-3d;
 }
 
-.chess-card .card {
+.chess-card .card,
+.chord-card .card {
   /* Need explicit height for flip to work when container is auto */
   height: auto;
 }
@@ -276,22 +278,37 @@ body {
   text-align: center;
 }
 
-/* Chess card faces: use relative positioning so container sizes to content */
-.chess-card .card-face {
+/* Visual card faces: use relative positioning so container sizes to content */
+.chess-card .card-face,
+.chord-card .card-face {
   position: relative;
   padding: 1rem;
 }
 
-.chess-card .card-face.card-back {
+.chess-card .card-face.card-back,
+.chord-card .card-face.card-back {
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.chess-card .card-board svg {
+.chess-card .card-board svg,
+.chord-card .card-board svg {
   width: 100%;
   height: auto;
   max-width: 100%;
+}
+
+/* Chord card: constrain diagram width so it looks good */
+.chord-card .card-board {
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+.chord-card .card-front p,
+.chord-card .card-back p {
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 
 .card-front {
@@ -440,7 +457,8 @@ body {
     height: 250px;
   }
 
-  .card-container.chess-card {
+  .card-container.chess-card,
+  .card-container.chord-card {
     height: auto;
   }
 

@@ -1,5 +1,6 @@
 import { decks } from './decks/index.js';
 import { renderBoard } from './chess-renderer.js';
+import { renderChord } from './chord-renderer.js';
 
 // --- State ---
 let currentDeck = null;
@@ -26,6 +27,14 @@ function showScreen(name) {
 // --- Helpers ---
 function isChessDeck() {
   return currentDeck && currentDeck.cardType === 'chess';
+}
+
+function isChordDeck() {
+  return currentDeck && currentDeck.cardType === 'chord';
+}
+
+function isVisualDeck() {
+  return isChessDeck() || isChordDeck();
 }
 
 // --- Shuffle (Fisher-Yates) ---
@@ -66,13 +75,23 @@ function openConfig(deck) {
 
   // Show/hide mode selector based on deck type
   const modeSection = $('mode-section');
+  const modeBtns = document.querySelectorAll('#mode-select .btn-option');
   if (deck.cardType === 'chess') {
     modeSection.style.display = 'none';
-  } else {
+  } else if (deck.cardType === 'chord') {
+    // Chord deck: bi-directional with diagram/name labels
     modeSection.style.display = 'block';
-    document.querySelectorAll('#mode-select .btn-option').forEach((b) => {
-      b.classList.toggle('active', b.dataset.mode === 'word');
-    });
+    modeBtns[0].textContent = 'Diagram';
+    modeBtns[1].textContent = 'Name';
+    modeBtns[2].textContent = 'Mix';
+    modeBtns.forEach((b) => b.classList.toggle('active', b.dataset.mode === 'word'));
+  } else {
+    // Text deck: word/definition labels
+    modeSection.style.display = 'block';
+    modeBtns[0].textContent = 'Word';
+    modeBtns[1].textContent = 'Definition';
+    modeBtns[2].textContent = 'Mix';
+    modeBtns.forEach((b) => b.classList.toggle('active', b.dataset.mode === 'word'));
   }
 
   document.querySelectorAll('#level-select .btn-option').forEach((b) => {
@@ -120,9 +139,10 @@ function startSession() {
   cards = shuffle(getFilteredCards());
   currentIndex = 0;
 
-  // Toggle chess-card class on container for layout
+  // Toggle visual card class on container for layout
   const container = $('card-container');
   container.classList.toggle('chess-card', isChessDeck());
+  container.classList.toggle('chord-card', isChordDeck());
 
   showScreen('flash');
   renderCard();
@@ -174,6 +194,38 @@ function renderCard() {
       backHtml += `<br><span class="chess-rating">Rating: ${card.rating}</span>`;
     }
     backText.innerHTML = backHtml;
+  } else if (isChordDeck()) {
+    // Chord card: bi-directional (diagram ↔ name)
+    let showDiagramFront;
+    if (displayMode === 'word') {
+      showDiagramFront = true;
+    } else if (displayMode === 'definition') {
+      showDiagramFront = false;
+    } else {
+      showDiagramFront = Math.random() < 0.5;
+    }
+
+    if (showDiagramFront) {
+      // Front: diagram, Back: chord name
+      frontText.style.display = 'none';
+      frontBoard.style.display = 'flex';
+      frontBoard.innerHTML = '';
+      frontBoard.appendChild(renderChord(card));
+
+      backText.style.display = 'block';
+      backText.innerHTML = `<strong>${card.word}</strong>`;
+      backBoard.style.display = 'none';
+    } else {
+      // Front: chord name, Back: diagram
+      frontText.style.display = 'block';
+      frontText.textContent = card.word;
+      frontBoard.style.display = 'none';
+
+      backText.style.display = 'none';
+      backBoard.style.display = 'flex';
+      backBoard.innerHTML = '';
+      backBoard.appendChild(renderChord(card));
+    }
   } else {
     // Text card: word/definition
     frontText.style.display = 'block';
