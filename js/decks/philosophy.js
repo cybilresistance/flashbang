@@ -17,6 +17,8 @@ const cards = [
   { word: "materialism", definition: "The view that only physical matter exists; mental states are reducible to physical processes", level: 1 },
   { word: "utilitarianism", definition: "The ethical theory that the right action is the one that maximizes overall happiness or well-being", level: 1 },
   { word: "nihilism", definition: "The rejection of all religious and moral principles, often asserting that life is without objective meaning or purpose", level: 1 },
+  { word: "skepticism", definition: "The philosophical attitude of doubting claims to knowledge; questioning whether certain or absolute knowledge is possible", level: 1 },
+  { word: "monism", definition: "The view that reality consists of one fundamental substance or principle — either entirely mental or entirely physical", level: 1 },
 
   // ===== Level 2 — Core Philosophical Terms =====
   { word: "a priori", definition: "Knowledge or justification that is independent of experience; knowable through reason alone (e.g., 2+2=4)", level: 2 },
@@ -34,6 +36,9 @@ const cards = [
   { word: "virtue ethics", definition: "An approach to ethics emphasizing the development of good character traits (virtues) rather than rules or outcomes", level: 2 },
   { word: "syllogism", definition: "A form of deductive reasoning with a major premise, a minor premise, and a conclusion (e.g., All men are mortal...)", level: 2 },
   { word: "dialectic", definition: "A method of argument through dialogue, or the process of resolving contradictions between thesis and antithesis", level: 2 },
+  { word: "induction", definition: "Reasoning from specific observations to general conclusions; foundational to science but philosophically problematic (the 'problem of induction')", level: 2 },
+  { word: "naturalism", definition: "The view that everything can be explained by natural causes and laws; denies the existence of supernatural entities", level: 2 },
+  { word: "fatalism", definition: "The belief that all events are predetermined and inevitable, regardless of human action or choice", level: 2 },
 
   // ===== Level 3 — Intermediate / Historical =====
   { word: "tabula rasa", definition: "The 'blank slate' theory (Locke): the mind at birth has no innate ideas; all knowledge comes from experience", level: 3 },
@@ -51,6 +56,10 @@ const cards = [
   { word: "hermeneutics", definition: "The theory and methodology of interpretation, especially of texts, language, and symbolic meaning", level: 3 },
   { word: "alienation", definition: "Marx's concept: the estrangement of workers from their labor, product, fellow humans, and human potential under capitalism", level: 3 },
   { word: "bad faith", definition: "Sartre's concept: self-deception where one denies their own freedom and responsibility by adopting false roles or excuses", level: 3 },
+  { word: "nominalism", definition: "The view that universals (e.g., 'redness') are merely names — only particular things exist, not abstract categories", level: 3 },
+  { word: "theodicy", definition: "A philosophical argument attempting to reconcile the existence of evil with an omnipotent, omniscient, benevolent God", level: 3 },
+  { word: "emotivism", definition: "The metaethical view that moral statements do not express propositions but rather emotional attitudes (e.g., 'Stealing is wrong' = 'Boo stealing!')", level: 3 },
+  { word: "constructivism", definition: "The view that knowledge and moral principles are constructed through human activity and social agreement, not discovered", level: 3 },
 
   // ===== Level 4 — Advanced =====
   { word: "qualia", definition: "The subjective, conscious experiences of sensation (e.g., the 'redness' of red) — central to the hard problem of consciousness", level: 4 },
@@ -65,6 +74,10 @@ const cards = [
   { word: "categorical error", definition: "The mistake of ascribing a property to something that could not logically possess it (e.g., asking what color Thursday is)", level: 4 },
   { word: "simulacrum", definition: "Baudrillard's concept: a copy without an original; a representation that replaces and obscures the reality it once depicted", level: 4 },
   { word: "epistemic humility", definition: "The recognition that one's knowledge is always limited, fallible, and shaped by one's perspective", level: 4 },
+  { word: "functionalism", definition: "The theory that mental states are defined by their functional roles — what they do — rather than by what they are made of", level: 4 },
+  { word: "physicalism", definition: "The thesis that everything that exists is physical, or supervenes on the physical — a modern refinement of materialism", level: 4 },
+  { word: "reductionism", definition: "The view that complex phenomena can be fully explained by reducing them to simpler, more fundamental components", level: 4 },
+  { word: "Euthyphro dilemma", definition: "Plato's challenge: is something good because God wills it, or does God will it because it is good? Either horn undermines divine command theory", level: 4 },
 
   // ===== Level 5 — Expert / Specialized =====
   { word: "aporia", definition: "An irresolvable internal contradiction or puzzle in a philosophical argument; a productive state of perplexity", level: 5 },
