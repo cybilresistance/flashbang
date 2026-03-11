@@ -37,7 +37,7 @@ const cards = [
   {
     word: "A Major",
     strings: [null, 0, 2, 2, 2, 0],
-    fingers: [null, null, 2, 1, 3, null],
+    fingers: [null, null, 1, 2, 3, null],
     baseFret: 1,
     level: 1,
   },
@@ -58,7 +58,7 @@ const cards = [
   {
     word: "E Minor",
     strings: [0, 2, 2, 0, 0, 0],
-    fingers: [null, 2, 3, null, null, null],
+    fingers: [null, 1, 2, null, null, null],
     baseFret: 1,
     level: 1,
   },
@@ -193,14 +193,14 @@ const cards = [
   {
     word: "Esus4",
     strings: [0, 2, 2, 2, 0, 0],
-    fingers: [null, 2, 3, 4, null, null],
+    fingers: [null, 1, 2, 3, null, null],
     baseFret: 1,
     level: 3,
   },
   {
     word: "Cadd9",
     strings: [null, 3, 2, 0, 3, 0],
-    fingers: [null, 2, 1, null, 3, null],
+    fingers: [null, 3, 2, null, 4, null],
     baseFret: 1,
     level: 3,
   },
