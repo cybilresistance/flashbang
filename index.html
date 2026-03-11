@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlashBang</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <!-- Set Selection Screen -->
+    <div id="set-select" class="screen active">
+      <h1 class="logo">FlashBang</h1>
+      <p class="subtitle">Pick a deck and start flipping</p>
+      <div id="deck-grid" class="deck-grid"></div>
+    </div>
+
+    <!-- Pre-Session Config -->
+    <div id="session-config" class="screen">
+      <button class="back-btn" id="back-to-sets">&larr; Back</button>
+      <h2 id="config-deck-name"></h2>
+      <p id="config-deck-desc" class="subtitle"></p>
+
+      <div class="config-section">
+        <label>Show first:</label>
+        <div class="btn-group" id="mode-select">
+          <button class="btn-option active" data-mode="word">Word</button>
+          <button class="btn-option" data-mode="definition">Definition</button>
+          <button class="btn-option" data-mode="mix">Mix</button>
+        </div>
+      </div>
+
+      <div class="config-section">
+        <label>Difficulty:</label>
+        <div class="btn-group" id="level-select">
+          <button class="btn-option active" data-level="all">All</button>
+          <button class="btn-option" data-level="1">1</button>
+          <button class="btn-option" data-level="2">2</button>
+          <button class="btn-option" data-level="3">3</button>
+          <button class="btn-option" data-level="4">4</button>
+          <button class="btn-option" data-level="5">5</button>
+        </div>
+      </div>
+
+      <p id="config-card-count" class="card-count"></p>
+      <button class="btn-start" id="start-btn">Start</button>
+    </div>
+
+    <!-- Flashcard Screen -->
+    <div id="flashcard-screen" class="screen">
+      <div class="flashcard-header">
+        <button class="back-btn" id="back-to-config">&larr; Back</button>
+        <span id="progress-text" class="progress-text"></span>
+      </div>
+      <div class="progress-bar-container">
+        <div id="progress-bar" class="progress-bar"></div>
+      </div>
+
+      <div class="card-container" id="card-container">
+        <div class="card" id="card">
+          <div class="card-face card-front">
+            <span class="card-level-badge" id="card-level-front"></span>
+            <p id="card-front-text"></p>
+          </div>
+          <div class="card-face card-back">
+            <span class="card-level-badge" id="card-level-back"></span>
+            <p id="card-back-text"></p>
+          </div>
+        </div>
+      </div>
+      <p class="flip-hint" id="flip-hint">click or press space to flip</p>
+
+      <div class="nav-buttons">
+        <button class="btn-nav" id="prev-btn">&larr; Prev</button>
+        <button class="btn-nav" id="next-btn">Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- End Screen -->
+    <div id="end-screen" class="screen">
+      <h2>Nice work!</h2>
+      <p id="end-summary" class="subtitle"></p>
+      <div class="end-buttons">
+        <button class="btn-start" id="play-again-btn">Play Again</button>
+        <button class="btn-nav" id="back-to-sets-end">&larr; Back to Decks</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
