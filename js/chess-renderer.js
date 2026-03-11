@@ -54,8 +54,7 @@ export function renderBoard(fen, { size = 280, flipped = false } = {}) {
   const svg = document.createElementNS(ns, 'svg');
   svg.setAttribute('viewBox', `0 0 ${size} ${size}`);
   svg.setAttribute('width', '100%');
-  svg.setAttribute('height', '100%');
-  svg.style.maxWidth = `${size}px`;
+  svg.style.display = 'block';
   svg.style.borderRadius = '8px';
   svg.style.boxShadow = '0 2px 12px rgba(0,0,0,0.15)';
 

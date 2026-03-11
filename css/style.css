@@ -241,12 +241,21 @@ body {
   cursor: pointer;
 }
 
+.card-container.chess-card {
+  height: auto;
+}
+
 .card {
   width: 100%;
   height: 100%;
   position: relative;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
+}
+
+.chess-card .card {
+  /* Need explicit height for flip to work when container is auto */
+  height: auto;
 }
 
 .card.flipped {
@@ -265,6 +274,24 @@ body {
   border-radius: var(--radius);
   box-shadow: var(--card-shadow);
   text-align: center;
+}
+
+/* Chess card faces: use relative positioning so container sizes to content */
+.chess-card .card-face {
+  position: relative;
+  padding: 1rem;
+}
+
+.chess-card .card-face.card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.chess-card .card-board svg {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
 }
 
 .card-front {
@@ -411,6 +438,10 @@ body {
 
   .card-container {
     height: 250px;
+  }
+
+  .card-container.chess-card {
+    height: auto;
   }
 
   .card-front p {

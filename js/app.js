@@ -119,6 +119,11 @@ $('start-btn').addEventListener('click', startSession);
 function startSession() {
   cards = shuffle(getFilteredCards());
   currentIndex = 0;
+
+  // Toggle chess-card class on container for layout
+  const container = $('card-container');
+  container.classList.toggle('chess-card', isChessDeck());
+
   showScreen('flash');
   renderCard();
 }
@@ -148,7 +153,7 @@ function renderCard() {
     // Render chess board
     frontBoard.innerHTML = '';
     const flipped = card.toMove === 'Black';
-    const svg = renderBoard(card.fen, { size: 280, flipped });
+    const svg = renderBoard(card.fen, { size: 400, flipped });
     frontBoard.appendChild(svg);
 
     // Add "to move" label
