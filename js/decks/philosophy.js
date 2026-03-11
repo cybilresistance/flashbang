@@ -1,0 +1,87 @@
+// Philosophy Vocabulary — key terms across major traditions and branches
+
+const cards = [
+  // ===== Level 1 — Foundational Concepts =====
+  { word: "epistemology", definition: "The branch of philosophy concerned with the nature, sources, and limits of knowledge", level: 1 },
+  { word: "metaphysics", definition: "The branch of philosophy dealing with the fundamental nature of reality, existence, and being", level: 1 },
+  { word: "ethics", definition: "The branch of philosophy concerned with moral principles, right and wrong conduct, and the good life", level: 1 },
+  { word: "aesthetics", definition: "The branch of philosophy dealing with the nature of beauty, art, and taste", level: 1 },
+  { word: "logic", definition: "The systematic study of valid reasoning and inference; the rules of correct thought", level: 1 },
+  { word: "empiricism", definition: "The theory that all knowledge is derived from sensory experience rather than innate ideas", level: 1 },
+  { word: "rationalism", definition: "The theory that reason, rather than experience, is the primary source of knowledge", level: 1 },
+  { word: "relativism", definition: "The view that truth, morality, or knowledge exists only in relation to culture, society, or context — not absolutely", level: 1 },
+  { word: "determinism", definition: "The doctrine that all events, including human choices, are determined by previously existing causes", level: 1 },
+  { word: "free will", definition: "The capacity to make choices that are not entirely determined by prior causes or divine intervention", level: 1 },
+  { word: "dualism", definition: "The view that mind and body (or mental and physical) are fundamentally distinct substances", level: 1 },
+  { word: "idealism", definition: "The view that reality is fundamentally mental or mind-dependent; ideas are the basis of all that exists", level: 1 },
+  { word: "materialism", definition: "The view that only physical matter exists; mental states are reducible to physical processes", level: 1 },
+  { word: "utilitarianism", definition: "The ethical theory that the right action is the one that maximizes overall happiness or well-being", level: 1 },
+  { word: "nihilism", definition: "The rejection of all religious and moral principles, often asserting that life is without objective meaning or purpose", level: 1 },
+
+  // ===== Level 2 — Core Philosophical Terms =====
+  { word: "a priori", definition: "Knowledge or justification that is independent of experience; knowable through reason alone (e.g., 2+2=4)", level: 2 },
+  { word: "a posteriori", definition: "Knowledge or justification that depends on sensory experience or empirical evidence", level: 2 },
+  { word: "ontology", definition: "The study of what exists; the philosophical investigation of the nature and categories of being", level: 2 },
+  { word: "phenomenology", definition: "The study of structures of consciousness and experience as they appear from the first-person perspective", level: 2 },
+  { word: "existentialism", definition: "A tradition emphasizing individual existence, freedom, choice, and the creation of one's own meaning", level: 2 },
+  { word: "categorical imperative", definition: "Kant's principle: act only according to rules you could will to be universal laws for all rational beings", level: 2 },
+  { word: "social contract", definition: "The theory that political authority and moral rules arise from an agreement among individuals to form a society", level: 2 },
+  { word: "solipsism", definition: "The philosophical idea that only one's own mind can be known to exist; nothing outside it is certain", level: 2 },
+  { word: "pragmatism", definition: "A tradition that evaluates ideas by their practical consequences and usefulness rather than abstract truth", level: 2 },
+  { word: "stoicism", definition: "An ancient philosophy teaching that virtue and wisdom come from self-control and acceptance of what one cannot change", level: 2 },
+  { word: "hedonism", definition: "The view that pleasure is the highest good and the proper aim of human life", level: 2 },
+  { word: "deontology", definition: "Ethical theory that judges actions by whether they follow rules or duties, regardless of consequences", level: 2 },
+  { word: "virtue ethics", definition: "An approach to ethics emphasizing the development of good character traits (virtues) rather than rules or outcomes", level: 2 },
+  { word: "syllogism", definition: "A form of deductive reasoning with a major premise, a minor premise, and a conclusion (e.g., All men are mortal...)", level: 2 },
+  { word: "dialectic", definition: "A method of argument through dialogue, or the process of resolving contradictions between thesis and antithesis", level: 2 },
+
+  // ===== Level 3 — Intermediate / Historical =====
+  { word: "tabula rasa", definition: "The 'blank slate' theory (Locke): the mind at birth has no innate ideas; all knowledge comes from experience", level: 3 },
+  { word: "cogito ergo sum", definition: "'I think, therefore I am' (Descartes): the one indubitable truth that survives radical doubt", level: 3 },
+  { word: "Übermensch", definition: "Nietzsche's 'overman': one who creates their own values and meaning after the 'death of God'", level: 3 },
+  { word: "noumenon", definition: "Kant's 'thing-in-itself': reality as it exists independent of perception, which can never be directly known", level: 3 },
+  { word: "phenomenon", definition: "In Kant: things as they appear to us through the senses, shaped by our mental categories — not things-in-themselves", level: 3 },
+  { word: "teleology", definition: "Explanation by reference to purpose or end goal; the view that phenomena are best explained by their function", level: 3 },
+  { word: "compatibilism", definition: "The view that free will and determinism are not mutually exclusive; one can be free even in a determined universe", level: 3 },
+  { word: "consequentialism", definition: "The class of ethical theories holding that the morality of an action depends solely on its outcomes", level: 3 },
+  { word: "moral realism", definition: "The view that moral facts exist objectively, independent of human beliefs or attitudes", level: 3 },
+  { word: "absurdism", definition: "Camus's view that humans seek meaning in a universe that offers none, and the proper response is to embrace the absurd", level: 3 },
+  { word: "Platonic forms", definition: "Plato's theory that abstract, perfect, eternal 'Forms' (e.g., Justice, Beauty) are more real than physical objects", level: 3 },
+  { word: "eudaimonia", definition: "Aristotle's concept of human flourishing or well-being; the highest good achievable through virtuous living", level: 3 },
+  { word: "hermeneutics", definition: "The theory and methodology of interpretation, especially of texts, language, and symbolic meaning", level: 3 },
+  { word: "alienation", definition: "Marx's concept: the estrangement of workers from their labor, product, fellow humans, and human potential under capitalism", level: 3 },
+  { word: "bad faith", definition: "Sartre's concept: self-deception where one denies their own freedom and responsibility by adopting false roles or excuses", level: 3 },
+
+  // ===== Level 4 — Advanced =====
+  { word: "qualia", definition: "The subjective, conscious experiences of sensation (e.g., the 'redness' of red) — central to the hard problem of consciousness", level: 4 },
+  { word: "supervenience", definition: "A relation where higher-level properties (e.g., mental) are determined by lower-level properties (e.g., physical) without being identical", level: 4 },
+  { word: "intentionality", definition: "The capacity of mental states to be 'about' or directed toward something; the 'aboutness' of thought", level: 4 },
+  { word: "verificationism", definition: "The doctrine that a statement is meaningful only if it can be empirically verified or is analytically true", level: 4 },
+  { word: "falsifiability", definition: "Popper's criterion: a theory is scientific only if it makes predictions that could, in principle, be proven false", level: 4 },
+  { word: "paradigm shift", definition: "Kuhn's concept: a fundamental change in the basic assumptions and practices of a scientific discipline", level: 4 },
+  { word: "deconstruction", definition: "Derrida's method of analyzing texts to expose hidden assumptions, contradictions, and unstable meanings within them", level: 4 },
+  { word: "panpsychism", definition: "The view that consciousness or mind is a fundamental and ubiquitous feature of reality, present in all matter", level: 4 },
+  { word: "Occam's razor", definition: "The principle that among competing explanations, the one with the fewest assumptions should be preferred", level: 4 },
+  { word: "categorical error", definition: "The mistake of ascribing a property to something that could not logically possess it (e.g., asking what color Thursday is)", level: 4 },
+  { word: "simulacrum", definition: "Baudrillard's concept: a copy without an original; a representation that replaces and obscures the reality it once depicted", level: 4 },
+  { word: "epistemic humility", definition: "The recognition that one's knowledge is always limited, fallible, and shaped by one's perspective", level: 4 },
+
+  // ===== Level 5 — Expert / Specialized =====
+  { word: "aporia", definition: "An irresolvable internal contradiction or puzzle in a philosophical argument; a productive state of perplexity", level: 5 },
+  { word: "différance", definition: "Derrida's neologism: meaning is always deferred and differs; no sign has a fixed, self-present meaning", level: 5 },
+  { word: "dasein", definition: "Heidegger's term for human existence or 'being-there': the unique way humans experience and question their own being", level: 5 },
+  { word: "rhizome", definition: "Deleuze & Guattari's model of knowledge as a non-hierarchical, interconnected network without a central root or origin", level: 5 },
+  { word: "dialectical materialism", definition: "Marx & Engels's framework: historical change driven by material conditions and resolved through contradictions (thesis-antithesis-synthesis)", level: 5 },
+  { word: "epoché", definition: "Husserl's phenomenological 'bracketing': suspending all judgments about the natural world to examine pure experience", level: 5 },
+  { word: "antinomy", definition: "A contradiction between two principles or conclusions that both seem equally reasonable and necessary (Kant)", level: 5 },
+  { word: "hylomorphism", definition: "Aristotle's doctrine that all physical objects are a compound of matter (hyle) and form (morphe)", level: 5 },
+  { word: "apophatic theology", definition: "The approach to understanding God by negation — describing what God is not, since God transcends all human categories", level: 5 },
+  { word: "eternal recurrence", definition: "Nietzsche's thought experiment: what if you had to live your exact life over and over for eternity? Would you affirm it?", level: 5 },
+];
+
+export default {
+  id: "philosophy-vocab",
+  name: "Philosophy",
+  description: "Key terms from epistemology, ethics, metaphysics, and major philosophical traditions",
+  cards,
+};
